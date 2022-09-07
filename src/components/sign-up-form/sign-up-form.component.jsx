@@ -2,6 +2,8 @@ import './sign-up-form.styles.scss'
 import { useState } from 'react'; //for form validation
 import FormInput from '../form-input/form-input.component';
 import Button from '../button/button.component';
+// import { UserContext } from '../../contexts/user.contex';
+
 import { createAuthUserWithEmailAndPassowrd, createUserDocumentFromAuth } from '../../utils/firebase/firebase.utils';
 const defaultFormFields = {
     displayName: '',
@@ -14,6 +16,7 @@ const SignUpForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const {displayName, email, password, confirmPassword } = formFields;
 
+    // const { setCurrentUser } = useContext(UserContext);
     const handleSubmit = async (event) => {
         event.preventDefault();
         //check if the passord is the same as confirmed password
@@ -27,6 +30,7 @@ const SignUpForm = () => {
             const {user} = await createAuthUserWithEmailAndPassowrd(email, password)
 
             console.log(user);
+            // setCurrentUser(user);
 
             //then passing email and password date into the getDoc func to create a new user (or generate new document)
             await createUserDocumentFromAuth(user, { displayName });

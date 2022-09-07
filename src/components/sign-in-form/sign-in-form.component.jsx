@@ -2,6 +2,8 @@ import './sign-in-form.styles.scss'
 import { useState } from 'react'; //for form validation
 import FormInput from '../form-input/form-input.component';
 import Button from '../button/button.component';
+// import { UserContext } from '../../contexts/user.contex'
+
 import { 
     signInWithGooglePopup, 
     createUserDocumentFromAuth,
@@ -17,14 +19,16 @@ function SignInForm() {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const { email, password } = formFields;
 
+    // const { setCurrentUser } = useContext(UserContext);
+
     const handleSubmit = async (event) => {
         event.preventDefault();
 
         //check if the user with email and password in DB
         try {
-            const response = await signInAuthUserWithEmailAndPassword(email, password)
-            console.log('This', response)
-
+            const { user } = await signInAuthUserWithEmailAndPassword(email, password);
+            console.log('This', user)
+            // setCurrentUser(user); //because we implemented onAuthStateChangedListener
             resetFormFields(); //reset form after we successfully created a user document
 
         } catch (error) {
@@ -50,8 +54,12 @@ function SignInForm() {
     };
 
     const SignInWithGoogle = async() => {
-        const { user } = await signInWithGooglePopup();
-        await createUserDocumentFromAuth(user);
+        await signInWithGooglePopup();
+        // setCurrentUser(user); //because we implemented onAuthStateChangedListener
+        // await createUserDocumentFromAuth(user); //=> moved to Context
+        // const { user } = await signInWithGooglePopup();
+        // // setCurrentUser(user); //because we implemented onAuthStateChangedListener
+        // await createUserDocumentFromAuth(user);
     };
 
     const handleChange = (event) => {
