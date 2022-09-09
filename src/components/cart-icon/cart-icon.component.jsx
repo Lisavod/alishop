@@ -5,7 +5,7 @@ import { ReactComponent as ShoppingIcon} from '../../assets/shopping-bag.svg'
 import { DropdownContext } from '../../contexts/dropdown.context';
 
 const CartIcon = () => {
-    const { toggleDropdown, setToggleDropdown } = useContext(DropdownContext);
+    const { toggleDropdown, setToggleDropdown, itemsCounter} = useContext(DropdownContext);
 
     const handleDropdownToggler = () =>{
         setToggleDropdown(!toggleDropdown);
@@ -14,7 +14,7 @@ const CartIcon = () => {
     return (
         <div className='cart-icon-container' onClick={handleDropdownToggler}>
             <ShoppingIcon className='shopping-icon'/>
-            <span className='item-count'>0</span>
+            <span className='item-count'>{itemsCounter}</span>
 
         </div>
     )
