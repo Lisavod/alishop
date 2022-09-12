@@ -14,7 +14,11 @@ import {
     getFirestore,
     doc,
     getDoc,
-    setDoc
+    setDoc,
+    collection, //needed to create new DB collection -> allow us to get a collection references
+    writeBatch,
+    query,
+    getDocs,
 } from 'firebase/firestore' //https://firebase.google.com/docs/firestore/quickstart
 
 const firebaseConfig = {
@@ -47,6 +51,34 @@ export const signInWithGoogleRedirect = () => signInWithRedirect(auth, googlePro
 
 export const db = getFirestore(); //create our DB
 
+//create a new collection and upload the data there
+export const addCollectionAndDocuments = async(
+    collectionKey,
+    objectsToAdd,
+    field) => {
+    const collectionRef = collection(db, collectionKey); //create new collection
+    const batch = writeBatch(db);
+    objectsToAdd.forEach((object) => {
+        const docRef = doc(collectionRef, object[field].toLowerCase());
+        batch.set(docRef, object);
+    });
+    await batch.commit();
+    console.log('done');
+};
+
+export const getCategoriesAndDocuments = async() => {
+    const collectionRef = collection(db, 'categories');
+    const q = query(collectionRef);
+
+    const querySnapshot = await getDocs(q); //async ability to fetch a collection snapshop
+    console.log(querySnapshot);
+    const categoryMap = querySnapshot.docs.reduce((acc, docSnapshop) => {
+        const { title, items } = docSnapshop.data();
+        acc[title.toLowerCase()] = items;
+        return acc;
+    }, {});
+    return categoryMap;
+};
 
 
 export const createUserDocumentFromAuth = async(userAuth, additionaInformation = {}) => {
