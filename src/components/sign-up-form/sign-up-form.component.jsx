@@ -1,5 +1,5 @@
 import './sign-up-form.styles.scss'
-import { useState } from 'react'; //for form validation
+import React, { useState } from 'react'; //for form validation
 import FormInput from '../form-input/form-input.component';
 import Button from '../button/button.component';
 // import { UserContext } from '../../contexts/user.contex';

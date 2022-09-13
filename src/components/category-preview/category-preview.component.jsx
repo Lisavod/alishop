@@ -1,4 +1,5 @@
 
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './category-preview.styles.scss';
 import ProductCard from '../product-card/product-card.component'

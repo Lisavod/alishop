@@ -1,7 +1,7 @@
-import {useContext} from 'react';
-import {DropdownContext} from '../../contexts/dropdown.context'
-import './product-card.styles.scss'
-import Button from '../button/button.component'
+import React, {useContext} from 'react';
+import {DropdownContext} from '../../contexts/dropdown.context';
+import './product-card.styles.scss';
+import Button from '../button/button.component';
 
 const ProductCard = ({product}) => {
     const {name, price, imageUrl} = product;

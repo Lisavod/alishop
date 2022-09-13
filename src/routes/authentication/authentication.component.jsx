@@ -1,4 +1,4 @@
-import { useEffect } from 'react'; //needed for proper redirect handling
+import React, { useEffect } from 'react'; //needed for proper redirect handling
 import { getRedirectResult } from 'firebase/auth'; //needed for proper redirect handling
 //https://firebase.google.com/docs/auth/web/google-signin
 import {
@@ -19,6 +19,7 @@ const Authentication = () => {
             const response = await getRedirectResult(auth);
             if (response) {
                 const userDocRef = await createUserDocumentFromAuth(response.user);
+                console.log(userDocRef);
             }
         }, []);
 

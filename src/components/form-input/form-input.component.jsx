@@ -1,4 +1,5 @@
 import './form-input.styles.scss';
+import React from 'react';
 const FormInput = ({lable, ...otherProps}) => {
     return(
     <div className="group">

@@ -3,6 +3,7 @@
 // import { CategoriesContext } from '../../contexts/categories.context'; //import the ProductContex component
 // import CategoryPreview from '../../components/category-preview/category-preview.component';
 import { Routes, Route } from 'react-router-dom';
+import React from 'react';
 import Category from '../category/category.component';
 import CategoriesPreview from '../categories-preview/categories-preview.component'
 import './shop.styles.scss';

@@ -1,6 +1,6 @@
-import { Fragment, useContext } from 'react'; //React component, used if you don't want to render some tag
+import React, { Fragment, useContext } from 'react'; //React component, used if you don't want to render some tag
 import { Outlet, Link } from 'react-router-dom';
-import { ReactComponent as AlishopLogo} from '../../assets/Playful-Stick-Figure-Kids.svg';
+import { ReactComponent as AlishopLogo } from '../../assets/Playful-Stick-Figure-Kids.svg';
 import { UserContext } from '../../contexts/user.contex';
 import { signOutUser } from '../../utils/firebase/firebase.utils';
 import CartIcon from '../../components/cart-icon/cart-icon.component';

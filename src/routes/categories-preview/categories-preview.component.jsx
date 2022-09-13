@@ -2,7 +2,7 @@
 
 
 // import SHOP_DATA from '../../shop-data.json'; replace with a ProductsProvider data
-import { useContext, Fragment } from 'react';
+import React, { useContext, Fragment } from 'react';
 import { CategoriesContext } from '../../contexts/categories.context'; //import the ProductContex component
 import CategoryPreview from '../../components/category-preview/category-preview.component';
 
