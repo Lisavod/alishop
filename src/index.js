@@ -2,9 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { store } from './store/store';
+import { store, persistor } from './store/store';
 import './index.scss';
 import App from './App';
+import { PersistGate } from 'redux-persist/integration/react'; //special Component from persist lib
 // import { UserProvider } from './contexts/user.contex';
 // import { CategoriesProvider } from './contexts/categories.context';
 // import { DropdownProvider } from './contexts/dropdown.context';
@@ -14,17 +15,20 @@ import App from './App';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render( 
     <React.StrictMode>
-        <Provider store={store}>
-            <BrowserRouter>
-                {/* <UserProvider>
-                    <CategoriesProvider>
-                        <DropdownProvider> */}
-                        <App />
-                        {/* </DropdownProvider>
-                    </CategoriesProvider>
-                </UserProvider> */}
-            </BrowserRouter> 
-        </Provider>
+        <Provider store = {store}>
+            <PersistGate loading={null} persistor={persistor}> {/* lading null => it will render nothing until get data from localStorage*/}
+                <BrowserRouter> {
+        /* <UserProvider>
+                            <CategoriesProvider>
+                                <DropdownProvider> */
+    } 
+                    <App /> {
+        /* </DropdownProvider>
+                            </CategoriesProvider>
+                        </UserProvider> */
+    } 
+                </BrowserRouter> 
+             </PersistGate> 
+        </Provider> 
     </React.StrictMode>
 );
-
