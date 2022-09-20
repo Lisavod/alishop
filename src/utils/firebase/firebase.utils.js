@@ -70,7 +70,7 @@ export const addCollectionAndDocuments = async(
 export const getCategoriesAndDocuments = async() => {
     const collectionRef = collection(db, 'categories');
     const q = query(collectionRef);
-
+    // await Promise.reject(new Error('Errors was occured...'))
     const querySnapshot = await getDocs(q); //async ability to fetch a collection snapshop
 
     return querySnapshot.docs.map(docSnapshot => docSnapshot.data());

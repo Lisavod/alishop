@@ -3,11 +3,14 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "@stripe/react-stripe-js": "^1.10.0",
+        "@stripe/stripe-js": "^1.36.0",
         "@testing-library/jest-dom": "^5.16.4",
         "@testing-library/react": "^13.3.0",
         "@testing-library/user-event": "^13.5.0",
         "core-js": "^3.25.1",
         "css-select": "^5.1.0",
+        "dotenv": "^16.0.2",
         "eslint-webpack-plugin": "^3.2.0",
         "firebase": "^9.9.0",
         "html-webpack-plugin": "^5.5.0",
@@ -20,8 +23,10 @@
         "redux": "^4.2.0",
         "redux-logger": "^3.0.6",
         "redux-persist": "^6.0.0",
+        "redux-thunk": "^2.4.1",
         "reselect": "^4.1.6",
         "sass-loader": "^13.0.2",
+        "stripe": "^10.10.0",
         "styled-components": "^5.3.5",
         "svgo": "^2.8.0",
         "tar": "^6.1.11",
@@ -33,7 +38,8 @@
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "netlify": "netlify"
     },
     "eslintConfig": {
         "extends": [
@@ -57,6 +63,7 @@
         "@babel/core": "^7.19.0",
         "@babel/eslint-parser": "^7.18.9",
         "eslint": "^8.23.1",
+        "netlify-cli": "^11.8.0",
         "node-sass": "^7.0.3"
     },
     "optionalDependencies": {

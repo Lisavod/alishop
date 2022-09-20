@@ -9,26 +9,30 @@ import { PersistGate } from 'redux-persist/integration/react'; //special Compone
 // import { UserProvider } from './contexts/user.contex';
 // import { CategoriesProvider } from './contexts/categories.context';
 // import { DropdownProvider } from './contexts/dropdown.context';
-
-
+import { Elements } from '@stripe/react-stripe-js'
+import { stripePromise } from './utils/stripe/stripe.utils'; //registered Stripe publisheble key
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render( 
-    <React.StrictMode>
-        <Provider store = {store}>
-            <PersistGate loading={null} persistor={persistor}> {/* lading null => it will render nothing until get data from localStorage*/}
+    <React.StrictMode >
+        <Provider store = { store } >
+            <PersistGate loading = {null} persistor = { persistor } > { /* lading null => it will render nothing until get data from localStorage*/ } 
                 <BrowserRouter> {
         /* <UserProvider>
                             <CategoriesProvider>
                                 <DropdownProvider> */
     } 
-                    <App /> {
+                    <Elements stripe={stripePromise}>
+                        <App /> 
+                    </Elements>              
+                    
+    
+    {
         /* </DropdownProvider>
                             </CategoriesProvider>
                         </UserProvider> */
-    } 
-                </BrowserRouter> 
-             </PersistGate> 
-        </Provider> 
+    }           </BrowserRouter>  
+            </PersistGate> 
+        </Provider>  
     </React.StrictMode>
 );

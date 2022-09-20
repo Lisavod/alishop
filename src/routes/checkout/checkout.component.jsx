@@ -7,7 +7,7 @@ import {
     selectCartItems,
     selectCartTotal,
   } from '../../store/cart/cart.selector';
-
+import PaymentForm from '../../components/payment-form/payment-form.component';
 
 
 const Checkout = () => {
@@ -63,7 +63,8 @@ const Checkout = () => {
                 }
             
             )}
-             <span className='total'>Total: ${cartTotal}</span>   
+             <span className='total'>Total: {cartTotal} CZK</span>   
+             <PaymentForm/>
         </div>
 
     ); 
