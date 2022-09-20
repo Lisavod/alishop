@@ -1,14 +1,19 @@
 import './checkout.styles.scss';
-import React, { useContext } from 'react';
-import { DropdownContext } from '../../contexts/dropdown.context';
+import React from 'react';
+import { useSelector } from 'react-redux';
+// import { DropdownContext } from '../../contexts/dropdown.context';
 import CheckoutItem from '../../components/checkout-item/checkout-item.component'
-
-
+import {
+    selectCartItems,
+    selectCartTotal,
+  } from '../../store/cart/cart.selector';
+import PaymentForm from '../../components/payment-form/payment-form.component';
 
 
 const Checkout = () => {
-    const { cartItems, cartTotal } = useContext(DropdownContext);
-    
+    // const { cartItems, cartTotal } = useContext(DropdownContext);
+    const cartItems = useSelector(selectCartItems);
+    const cartTotal = useSelector(selectCartTotal);
     
     // const decriment = (item) => {
     //     const newItemList = [...cartItems, {...item, quantity:10}]
@@ -58,7 +63,8 @@ const Checkout = () => {
                 }
             
             )}
-             <span className='total'>Total: ${cartTotal}</span>   
+             <span className='total'>Total: {cartTotal} CZK</span>   
+             <PaymentForm/>
         </div>
 
     ); 

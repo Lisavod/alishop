@@ -1,24 +1,34 @@
 // // import SHOP_DATA from '../../shop-data.json'; replace with a ProductsProvider data
 // import { useContext, Fragment } from 'react';
 // import { CategoriesContext } from '../../contexts/categories.context'; //import the ProductContex component
-// import CategoryPreview from '../../components/category-preview/category-preview.component';
+
 import { Routes, Route } from 'react-router-dom';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Category from '../category/category.component';
-import CategoriesPreview from '../categories-preview/categories-preview.component'
+import CategoriesPreview from '../categories-preview/categories-preview.component';
 import './shop.styles.scss';
+// import { getCategoriesAndDocuments } from '../../utils/firebase/firebase.utils';
+// import { setCategories } from '../../store/categories/categories.action';
+import { useDispatch } from 'react-redux';
+import { fetchCategoriesStartAsync } from  '../../store/categories/categories.action';
+
 
 const Shop = () => {
     // const {categoriesMap} = useContext(CategoriesContext);
-    
-    return (
+    const dispatch = useDispatch();
 
+    useEffect(()=> {
+        dispatch(fetchCategoriesStartAsync());
+    }, [dispatch]);
+
+  
+    return (
+     
         <Routes>
             <Route index element={<CategoriesPreview/>}/>
             <Route path=":category" element={<Category/>}/>
-
-         
         </Routes>
+      
         // <div className='shop-container'>
             
        

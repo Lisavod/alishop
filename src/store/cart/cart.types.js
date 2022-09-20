@@ -1,0 +1,10 @@
+//set action types
+
+const CART_ACTION_TYPES = {
+    SET_CART_ITEMS: 'cart/SET_CART_ITEMS',
+    SET_TOGGLE_DROPDOWN: 'cart/SET_TOGGLE_DROPDOWN',
+    SET_ITEMS_COUNTER: 'cart/SET_ITEMS_COUNTER',
+    SET_CART_TOTAL: 'cart/SET_CART_TOTAL',
+};
+
+export default CART_ACTION_TYPES;
